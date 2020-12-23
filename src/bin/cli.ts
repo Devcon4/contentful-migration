@@ -67,13 +67,17 @@ export const createMakeRequest = (client: PlainClientAPI, { spaceId, environment
 const createRun = ({ shouldThrow }) => async function run (argv) {
   let migrationFunction
   const terminate = makeTerminatingFunction({ shouldThrow })
-  try {
-    migrationFunction = require(argv.filePath)
-  } catch (e) {
-    const message = chalk`{red.bold The ${argv.filePath} script could not be parsed, as it seems to contain syntax errors.}\n`
-    console.error(message)
-    console.error(e)
-    terminate(new Error(message))
+  if(argv.migrationFunction && typeof argv.migrationFunction === 'function') {
+    migrationFunction = argv.migrationFunction
+  } else {
+    try {
+      migrationFunction = require(argv.filePath)
+    } catch (e) {
+      const message = chalk`{red.bold The ${argv.filePath} script could not be parsed, as it seems to contain syntax errors.}\n`
+      console.error(message)
+      console.error(e)
+      terminate(new Error(message))
+    }
   }
 
   const application = argv.managementApplication || `contentful.migration-cli/${version}`
