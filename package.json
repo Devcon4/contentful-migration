@@ -1,5 +1,5 @@
 {
-  "name": "@devcon4/contentful-migration",
+  "name": "contentful-migration",
   "version": "0.0.0-development",
   "description": "Migration tooling for contentful",
   "author": "Contentful GmbH",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/contentful/contentful-migration"
+    "url": "https://github.com/Devcon4/contentful-migration"
   },
   "scripts": {
     "clean": "rimraf built",
