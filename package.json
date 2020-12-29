@@ -1,6 +1,6 @@
 {
   "name": "@devcon4/contentful-migration",
-  "version": "0.0.1-development",
+  "version": "0.0.2-development",
   "description": "Migration tooling for contentful",
   "author": "Contentful GmbH",
   "license": "MIT",

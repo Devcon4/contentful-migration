@@ -1,14 +1,19 @@
 import * as axios from 'axios'
 
-export interface RunMigrationConfig {
+export type RunMigrationConfig = FilePathRunMigrationConfig | FuncRunMigrationConfig;
+type FilePathRunMigrationConfig = BaseRunMigrationConfig & {
   filePath: string
+}
+type FuncRunMigrationConfig = BaseRunMigrationConfig & {
+  migrationFunction: Function
+}
+interface BaseRunMigrationConfig {
   accessToken?: string
   spaceId?: string
   environmentId?: string
   proxy?: string
   rawProxy?: boolean
   yes?: boolean
-  migrationFunction?: Function
 }
 
 export function runMigration (config: RunMigrationConfig): Promise<any>
