@@ -67,7 +67,7 @@ export const createMakeRequest = (client: PlainClientAPI, { spaceId, environment
 const createRun = ({ shouldThrow }) => async function run (argv) {
   let migrationFunction
   const terminate = makeTerminatingFunction({ shouldThrow })
-  if(argv.migrationFunction && typeof argv.migrationFunction === 'function') {
+  if(argv.migrationFunction) {
     migrationFunction = argv.migrationFunction
   } else {
     try {
