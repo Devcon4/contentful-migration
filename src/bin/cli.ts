@@ -64,8 +64,6 @@ export const createMakeRequest = (client: PlainClientAPI, { spaceId, environment
   }
 }
 
-let migrationCounter = 0;
-
 const createRun = ({ shouldThrow }) => async function run (argv) {
   let migrationFunction
   const terminate = makeTerminatingFunction({ shouldThrow })
@@ -127,8 +125,7 @@ const createRun = ({ shouldThrow }) => async function run (argv) {
 
   let migrationName = '';
   if(argv.migrationFunction) {
-    migrationName = `migration-${(''+migrationCounter).padStart(2, "0")}`;
-    migrationCounter++;
+    migrationName = argv.name;
   } else {
     migrationName = path.basename(argv.filePath, '.js');
   }

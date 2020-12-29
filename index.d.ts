@@ -6,6 +6,7 @@ type FilePathRunMigrationConfig = BaseRunMigrationConfig & {
 }
 type FuncRunMigrationConfig = BaseRunMigrationConfig & {
   migrationFunction: Function
+  name: string
 }
 interface BaseRunMigrationConfig {
   accessToken?: string
